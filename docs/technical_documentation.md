@@ -34,72 +34,71 @@ The technology stack was chosen based on:
 - Flexibility and speed in development
 - Suitability for building interactive web applications
 
-## 3. Implementation Progress
+## 3. Implementation Details
 
-### 3.1 Phase 1: Project Setup & Foundation (Completed)
+### 3.1 Frontend Implementation
 
-- Created project directory structure with:
-  - Frontend folder for UI components
-  - Backend folder with separation of concerns (routes, models, config)
-  - Documentation folder
-- Initialized project with npm
-- Set up Git repository
-- Created README.md with project overview
-- Created initial technical documentation
+#### 3.1.1 HTML Structure (`frontend/index.html`)
+- Responsive HTML5 structure with appropriate meta tags
+- Chatbot interface with message area and input controls
+- Font Awesome icons for improved visual appeal
+- Initial welcome message to guide the user
 
-### 3.2 Phase 1: Server Boilerplate (Completed)
+#### 3.1.2 CSS Styling (`frontend/css/style.css`)
+- CSS variables system for consistent theming
+- Responsive design with mobile-first approach
+- Message bubble styling with sender differentiation
+- Loading animation and typing indicators
+- Media queries for different device sizes
 
-#### 3.2.1 Express Server Configuration (`server.js`)
-- Set up Express application
-- Configured CORS for cross-origin requests
-- Added middleware for JSON and URL-encoded request parsing
-- Configured static file serving for frontend
-- Set up basic API route structure
-- Implemented environment variable support
+#### 3.1.3 JavaScript Functionality (`frontend/js/chatbot.js`)
+- DOM manipulation for dynamic message rendering
+- Event listeners for user interactions
+- API communication using fetch and async/await
+- Chat history tracking for context preservation
+- Visual feedback during message processing
+- Error handling for network issues
 
-#### 3.2.2 Database Configuration (`config/database.js`)
-- Implemented MongoDB connection with mongoose
-- Added connection options for better performance and compatibility
-- Implemented error handling for database connection issues
-- Added event listeners for connection status monitoring
+### 3.2 Backend Implementation
 
-### 3.3 Phase 2: Frontend Development (Completed)
+#### 3.2.1 Express Server (`backend/server.js`)
+- Express application setup with middleware configuration
+- CORS support for cross-origin requests
+- Static file serving for frontend assets
+- Environment variable support via dotenv
+- Error handling for graceful failure
 
-#### 3.3.1 HTML Structure (`frontend/index.html`)
-- Created responsive HTML5 structure
-- Added meta tags for SEO and mobile compatibility
-- Implemented the chatbot interface container
-- Created chat message area with example messages
-- Added input field and send button with FontAwesome icons
-- Designed the UI to be clean and focused on conversation
+#### 3.2.2 Database Configuration (`backend/config/database.js`)
+- MongoDB connection with mongoose
+- Error handling for connection issues
+- Event listeners for connection status monitoring
 
-#### 3.3.2 CSS Styling (`frontend/css/style.css`)
-- Implemented responsive design using CSS variables
-- Created styles for chat container and message bubbles
-- Styled different message types (user vs. bot)
-- Added animations for better user experience
-- Implemented loading indicators
-- Made the interface mobile-friendly with media queries
+#### 3.2.3 API Routes (`backend/routes/api.js`)
+- RESTful API endpoints for chat functionality
+- Test endpoint for connectivity verification
 
 ## 4. Design Decisions
 
-### 4.1 UI Simplification
-- Focused the interface solely on chatbot interaction
-- Removed separate product display section to create a more conversational experience
-- Simplified the UI to ensure good usability across all devices
+### 4.1 UI Design
+- Clean, focused chatbot interface
+- Blue color scheme to convey trust and professionalism
+- Conversation-centric experience
+- Mobile-first responsive design
 
-### 4.2 Styling Approach
-- Used CSS variables for easier theme management
-- Implemented mobile-first design principles
-- Created a clean, modern interface with subtle animations
-- Used a blue color scheme to convey trust and professionalism
+### 4.2 Code Structure
+- Separation of concerns between frontend and backend
+- Modular JavaScript with clear function responsibilities
+- Asynchronous API communication pattern
+- Environment-based configuration
 
-## 5. Challenges and Solutions
+## 5. Technical Challenges
 
 ### 5.1 Server Configuration
-- **Challenge**: Setting up a robust server configuration that handles errors gracefully
-- **Solution**: Implemented async/await pattern with proper error handling and added event listeners for various connection states
+- Handling asynchronous database connections
+- Proper error management for API requests
+- Ensuring proper environment variable loading
 
-### 5.2 Environment Variables
-- **Challenge**: Ensuring proper loading of environment variables across different environments
-- **Solution**: Implemented dotenv configuration with clear error handling and fallback values
+### 5.2 Frontend Communication
+- Managing chat state between user sessions
+- Providing visual feedback during API calls
+- Handling potential network errors gracefully

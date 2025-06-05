@@ -6,30 +6,6 @@ An interactive chatbot for an e-commerce platform that helps customers search, e
 
 - **Tech Stack**: HTML5, CSS3, JavaScript, Node.js, Express.js, MongoDB
 
-## Getting Started
-
-### Prerequisites
-
-- Node.js
-- MongoDB
-
-### Installation
-
-1. Clone the repository
-2. Install dependencies:
-
-```
-npm install
-```
-
-3. Start the server:
-
-```
-node backend/server.js
-```
-
-4. Open your browser and navigate to `http://localhost:3000`
-
 ## Project Structure
 
 ```
@@ -57,7 +33,7 @@ ecommerce-chatbot/
 └── package.json            # Project dependencies
 ```
 
-## Current Implementation Status
+## Getting Started
 
 ### Prerequisites
 
@@ -81,8 +57,17 @@ node backend/server.js
 
 4. Open your browser and navigate to `http://localhost:3000`
 
+## Features
+
+- Interactive chat interface
+- Product search and recommendations
+- Responsive design for all devices
+- Real-time chat interaction
+
 ## API Endpoints
 
 - **GET /api/test**: Test endpoint to verify API is working
+- **POST /api/chat**: Send messages to the chatbot and get responses
+
 
 
