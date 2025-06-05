@@ -39,9 +39,10 @@ The technology stack was chosen based on:
 This implementation follows a simplified approach:
 
 - Direct hardcoded MongoDB connection (no environment variables)
-- JavaScript-based filtering instead of complex MongoDB queries
+- JavaScript-based filtering for search operations
 - Focused product schema with essential fields only
 - Simple response logic for the chatbot
+- Straightforward API endpoints without complex parameters
 
 ## 3. Implementation Details
 
@@ -87,9 +88,10 @@ This implementation follows a simplified approach:
 
 #### 3.2.3 API Routes (`backend/routes/api.js`)
 
-- RESTful API endpoints for chat and product functionality
-- Manual filtering for search operations using JavaScript methods
-- Simple mock chatbot endpoint with keyword-based responses
+- Simple API endpoints for chatbot and product functionality
+- Basic product search using JavaScript filter methods
+- Category-based filtering for product discovery
+- Minimal sorting capabilities (by name or price)
 
 #### 3.2.4 Product Model (`backend/models/Product.js`)
 
@@ -112,9 +114,44 @@ This implementation follows a simplified approach:
   - Features as an array of strings
   - Rating and stock information
 
-## 4. Design Decisions
+## 4. API Endpoints
 
-### 4.1 UI Design
+### 4.1 Products API
+
+- **GET /api/products**: Retrieves all products
+
+  - Optional query parameters:
+    - `sort`: Sort by "name" or "price" (default: "name")
+    - `order`: "asc" or "desc" for sorting direction (default: "asc")
+
+- **GET /api/products/search**: Search products
+
+  - Query parameters:
+    - `q`: Search term (optional)
+    - `category`: Filter by category (optional)
+
+- **GET /api/products/category/:category**: Get products by category
+
+  - URL parameter:
+    - `category`: Category name (e.g., "smartphones")
+
+- **GET /api/products/:id**: Get single product by ID
+  - URL parameter:
+    - `id`: MongoDB ID of the product
+
+### 4.2 Categories API
+
+- **GET /api/categories**: Get all unique product categories
+
+### 4.3 Chatbot API
+
+- **POST /api/chat**: Send message to chatbot
+  - Request body:
+    - `message`: User's message text
+
+## 5. Design Decisions
+
+### 5.1 UI Design
 
 - Clean, focused chatbot interface
 - Blue color scheme to convey trust and professionalism
@@ -122,40 +159,19 @@ This implementation follows a simplified approach:
 - Mobile-first responsive design
 - Product cards for displaying search results
 
-### 4.2 Code Structure
+### 5.2 Code Structure
 
 - Separation of concerns between frontend and backend
 - Simplified API implementations for clarity
 - Direct, hardcoded connections for ease of setup
 - Standard JavaScript filtering methods instead of complex database queries
 
-### 4.3 Data Structure
+### 5.3 Data Structure
 
 - Focused product schema with essential fields
 - Specifications stored as a simple object for flexibility
 - Features as a simple array of strings
 - Sample products spanning various electronics categories
-
-## 5. Technical Implementation
-
-### 5.1 Server Simplifications
-
-- Direct MongoDB connection string instead of environment variables
-- Streamlined error handling
-- Express promise chain for database connection and server startup
-
-### 5.2 Data Access Simplifications
-
-- JavaScript array filtering instead of MongoDB query operators
-- Case-insensitive search using toLowerCase()
-- Manual extraction of unique categories
-- Simple string matching for product searches
-
-### 5.3 Chatbot Logic
-
-- Basic keyword detection for categorizing user inquiries
-- Simple, predefined responses based on detected keywords
-- Stateless interaction model for simplicity
 
 ## 6. Getting Started
 

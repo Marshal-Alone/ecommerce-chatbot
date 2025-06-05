@@ -85,9 +85,9 @@ npm run dev
 ## Implementation Notes
 
 - Simple MongoDB connection without environment variables
-- Clean data filtering using JavaScript methods instead of complex MongoDB queries
+- Basic product searching and filtering
 - Straightforward product schema focused on essential fields
-- Direct database connection pattern for easy deployment
+- Easy-to-understand API routes without complex parameters
 
 ## Mock Data
 

@@ -7,60 +7,45 @@ router.get("/test", (req, res) => {
 	res.json({ message: "API is working!" });
 });
 
-// Get all products with pagination
+// Get all products
 router.get("/products", async (req, res) => {
 	try {
-		// Pagination parameters
-		const page = parseInt(req.query.page) || 1; // Current page (default: 1)
-		const limit = parseInt(req.query.limit) || 10; // Items per page (default: 10)
+		// Simple sorting by name or price
+		const sortBy = req.query.sort === "price" ? "price" : "name";
+		const sortOrder = req.query.order === "desc" ? -1 : 1;
 
-		// Calculate skip value for pagination
-		const skip = (page - 1) * limit;
-
-		// Get total count of products
-		const total = await Product.countDocuments({});
-
-		// Fetch products with pagination
-		const products = await Product.find({}).skip(skip).limit(limit);
-
-		// Calculate total pages
-		const totalPages = Math.ceil(total / limit);
-
-		res.json({
-			products,
-			pagination: {
-				total,
-				totalPages,
-				currentPage: page,
-				itemsPerPage: limit,
-				hasNextPage: page < totalPages,
-				hasPrevPage: page > 1,
-			},
-		});
+		// Get products with basic sorting
+		const products = await Product.find({}).sort({ [sortBy]: sortOrder });
+		res.json(products);
 	} catch (error) {
 		res.status(500).json({ message: error.message });
 	}
 });
 
-// Search products by query string
+// Basic search with optional filters
 router.get("/products/search", async (req, res) => {
 	try {
-		const query = req.query.q ? req.query.q.toLowerCase() : "";
-
-		if (!query) {
-			return res.status(400).json({ message: "Search query is required" });
-		}
+		// Search parameters
+		const searchQuery = req.query.q ? req.query.q.toLowerCase() : "";
+		const category = req.query.category;
 
 		const allProducts = await Product.find({});
 
-		// Filter products manually instead of using regex
+		// Apply simple filters
 		const filteredProducts = allProducts.filter((product) => {
-			return (
-				product.name.toLowerCase().includes(query) ||
-				product.description.toLowerCase().includes(query) ||
-				product.category.toLowerCase().includes(query) ||
-				product.brand.toLowerCase().includes(query)
-			);
+			// Text search
+			const matchesSearch =
+				!searchQuery ||
+				product.name.toLowerCase().includes(searchQuery) ||
+				product.description.toLowerCase().includes(searchQuery) ||
+				product.brand.toLowerCase().includes(searchQuery) ||
+				product.category.toLowerCase().includes(searchQuery);
+
+			// Optional category filter
+			const matchesCategory =
+				!category || product.category.toLowerCase() === category.toLowerCase();
+
+			return matchesSearch && matchesCategory;
 		});
 
 		res.json(filteredProducts);
@@ -75,7 +60,7 @@ router.get("/products/category/:category", async (req, res) => {
 		const category = req.params.category.toLowerCase();
 		const allProducts = await Product.find({});
 
-		// Filter products manually by category
+		// Filter products by category
 		const filteredProducts = allProducts.filter(
 			(product) => product.category.toLowerCase() === category
 		);
@@ -104,10 +89,64 @@ router.get("/categories", async (req, res) => {
 	try {
 		const products = await Product.find({});
 
-		// Extract unique categories manually
+		// Extract unique categories
 		const categories = [...new Set(products.map((product) => product.category))];
 
 		res.json(categories);
+	} catch (error) {
+		res.status(500).json({ message: error.message });
+	}
+});
+
+// Get all brands with product count
+router.get("/brands", async (req, res) => {
+	try {
+		const products = await Product.find({});
+
+		// Create a map of brands and their count
+		const brandMap = {};
+		products.forEach((product) => {
+			const brand = product.brand;
+			if (brandMap[brand]) {
+				brandMap[brand]++;
+			} else {
+				brandMap[brand] = 1;
+			}
+		});
+
+		// Convert map to array of brand objects
+		const brands = Object.keys(brandMap).map((brand) => ({
+			name: brand,
+			count: brandMap[brand],
+		}));
+
+		// Sort brands alphabetically
+		brands.sort((a, b) => a.name.localeCompare(b.name));
+
+		res.json(brands);
+	} catch (error) {
+		res.status(500).json({ message: error.message });
+	}
+});
+
+// Get price range (min and max)
+router.get("/price-range", async (req, res) => {
+	try {
+		const products = await Product.find({});
+
+		if (products.length === 0) {
+			return res.json({ min: 0, max: 0 });
+		}
+
+		let minPrice = Number.MAX_SAFE_INTEGER;
+		let maxPrice = 0;
+
+		products.forEach((product) => {
+			if (product.price < minPrice) minPrice = product.price;
+			if (product.price > maxPrice) maxPrice = product.price;
+		});
+
+		res.json({ min: minPrice, max: maxPrice });
 	} catch (error) {
 		res.status(500).json({ message: error.message });
 	}
