@@ -1,30 +1,15 @@
 const mongoose = require("mongoose");
 
-// MongoDB connection URI (default to localhost if no env variable)
-const MONGO_URI = process.env.MONGO_URI || "mongodb://localhost:27017/ecommerce-chatbot";
-
-// Connect to MongoDB
+// Hard-coded MongoDB connection string (for simplicity)
 const connectDB = async () => {
 	try {
+		const MONGO_URI = "mongodb://localhost:27017/ecommerce-chatbot";
+
 		const conn = await mongoose.connect(MONGO_URI);
-		console.log("MongoDB Connected");
 
-		// Set up event listeners for connection issues
-		mongoose.connection.on("error", (err) => {
-			console.error("MongoDB connection error:", err);
-		});
-
-		mongoose.connection.on("disconnected", () => {
-			console.log("MongoDB disconnected");
-		});
-
-		mongoose.connection.on("reconnected", () => {
-			console.log("MongoDB reconnected");
-		});
-
-		return conn;
+		console.log(`MongoDB connected: ${conn.connection.host}`);
 	} catch (error) {
-		console.error("Error connecting to MongoDB:", error);
+		console.error(`Error: ${error.message}`);
 		process.exit(1);
 	}
 };

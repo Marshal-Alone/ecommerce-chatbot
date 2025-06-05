@@ -25,7 +25,8 @@ ecommerce-chatbot/
 │   ├── models/
 │   │   └── Product.js      # MongoDB schema for products
 │   ├── data/
-│   │   └── products.json   # Mock product data
+│   │   ├── products.json   # Mock product data
+│   │   └── seed.js         # Database seeding script
 │   └── config/
 │       └── database.js     # Database configuration
 ├── docs/
@@ -49,13 +50,19 @@ ecommerce-chatbot/
 npm install
 ```
 
-3. Start the server:
+3. Seed the database with mock product data:
 
 ```
-node backend/server.js
+npm run seed
 ```
 
-4. Open your browser and navigate to `http://localhost:3000`
+4. Start the server:
+
+```
+npm run dev
+```
+
+5. Open your browser and navigate to `http://localhost:8080`
 
 ## Features
 
@@ -63,11 +70,35 @@ node backend/server.js
 - Product search and recommendations
 - Responsive design for all devices
 - Real-time chat interaction
+- Mock e-commerce inventory with detailed product information
 
 ## API Endpoints
 
 - **GET /api/test**: Test endpoint to verify API is working
 - **POST /api/chat**: Send messages to the chatbot and get responses
+- **GET /api/products**: Get all products
+- **GET /api/products/search/:query**: Search products by name, description, category, or brand
+- **GET /api/products/:id**: Get a specific product by ID
+- **GET /api/categories**: Get all unique product categories
+- **GET /api/categories/:category**: Get all products in a specific category
 
+## Implementation Notes
 
+- Simple MongoDB connection without environment variables
+- Clean data filtering using JavaScript methods instead of complex MongoDB queries
+- Straightforward product schema focused on essential fields
+- Direct database connection pattern for easy deployment
 
+## Mock Data
+
+The system comes with a complete mock inventory including:
+
+- Smartphones
+- Laptops
+- Tablets
+- Audio devices
+- TVs
+- Gaming consoles
+- Accessories
+
+This data can be easily modified or extended in the `backend/data/products.json` file.

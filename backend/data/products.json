@@ -1,1 +1,172 @@
-
+[
+	{
+		"name": "iPhone 13 Pro",
+		"category": "smartphones",
+		"price": 999.99,
+		"description": "The iPhone 13 Pro features a 6.1-inch Super Retina XDR display with ProMotion technology for faster, more responsive performance.",
+		"image": "iphone-13-pro.jpg",
+		"brand": "Apple",
+		"specifications": {
+			"display": "6.1-inch Super Retina XDR",
+			"processor": "A15 Bionic",
+			"storage": "128GB",
+			"camera": "Triple 12MP"
+		},
+		"stock": 150,
+		"rating": 4.8,
+		"features": ["ProMotion technology", "Ceramic Shield", "A15 Bionic chip"]
+	},
+	{
+		"name": "Samsung Galaxy S22 Ultra",
+		"category": "smartphones",
+		"price": 1199.99,
+		"description": "The Samsung Galaxy S22 Ultra comes with a built-in S Pen, 108MP camera, and a powerful 4nm processor.",
+		"image": "galaxy-s22-ultra.jpg",
+		"brand": "Samsung",
+		"specifications": {
+			"display": "6.8-inch Dynamic AMOLED 2X",
+			"processor": "Snapdragon 8 Gen 1",
+			"storage": "256GB",
+			"camera": "108MP wide, 10MP telephoto, 12MP ultrawide"
+		},
+		"stock": 120,
+		"rating": 4.7,
+		"features": ["Built-in S Pen", "108MP camera", "45W fast charging"]
+	},
+	{
+		"name": "MacBook Pro 16-inch",
+		"category": "laptops",
+		"price": 2499.99,
+		"description": "The 16-inch MacBook Pro brings a whole new class of performance with M2 Pro and M2 Max chips.",
+		"image": "macbook-pro-16.jpg",
+		"brand": "Apple",
+		"specifications": {
+			"display": "16.2-inch Liquid Retina XDR",
+			"processor": "Apple M2 Pro/Max",
+			"memory": "16GB",
+			"storage": "512GB SSD"
+		},
+		"stock": 45,
+		"rating": 4.9,
+		"features": ["Apple Silicon", "Mini-LED display", "Magic Keyboard"]
+	},
+	{
+		"name": "Dell XPS 15",
+		"category": "laptops",
+		"price": 1799.99,
+		"description": "The Dell XPS 15 features a stunning 15.6-inch 4K OLED display, powerful Intel Core processors, and NVIDIA RTX graphics.",
+		"image": "dell-xps-15.jpg",
+		"brand": "Dell",
+		"specifications": {
+			"display": "15.6-inch 4K OLED",
+			"processor": "Intel Core i7-12700H",
+			"memory": "16GB",
+			"storage": "1TB SSD"
+		},
+		"stock": 35,
+		"rating": 4.7,
+		"features": ["InfinityEdge display", "Carbon fiber palm rest", "Quad speaker design"]
+	},
+	{
+		"name": "iPad Pro 12.9-inch",
+		"category": "tablets",
+		"price": 1099.99,
+		"description": "The 12.9-inch iPad Pro features the M2 chip, Liquid Retina XDR display, and support for Apple Pencil and Magic Keyboard.",
+		"image": "ipad-pro-12.jpg",
+		"brand": "Apple",
+		"specifications": {
+			"display": "12.9-inch Liquid Retina XDR",
+			"processor": "Apple M2",
+			"storage": "256GB",
+			"camera": "12MP wide + 10MP ultrawide"
+		},
+		"stock": 55,
+		"rating": 4.9,
+		"features": ["ProMotion technology", "Thunderbolt/USB 4", "Face ID"]
+	},
+	{
+		"name": "Samsung Galaxy Tab S8 Ultra",
+		"category": "tablets",
+		"price": 899.99,
+		"description": "The Galaxy Tab S8 Ultra features a massive 14.6-inch Super AMOLED display and comes with an S Pen in the box.",
+		"image": "galaxy-tab-s8-ultra.jpg",
+		"brand": "Samsung",
+		"specifications": {
+			"display": "14.6-inch Super AMOLED",
+			"processor": "Snapdragon 8 Gen 1",
+			"storage": "128GB",
+			"camera": "13MP wide + 6MP ultrawide"
+		},
+		"stock": 40,
+		"rating": 4.7,
+		"features": ["S Pen included", "Samsung DeX", "Quad speakers"]
+	},
+	{
+		"name": "Sony WH-1000XM5",
+		"category": "audio",
+		"price": 349.99,
+		"description": "The Sony WH-1000XM5 wireless headphones feature industry-leading noise cancellation and exceptional sound quality.",
+		"image": "sony-wh-1000xm5.jpg",
+		"brand": "Sony",
+		"specifications": {
+			"driver": "30mm driver",
+			"battery": "Up to 30 hours",
+			"noise_cancellation": "Active with 8 microphones",
+			"connectivity": "Bluetooth 5.2"
+		},
+		"stock": 60,
+		"rating": 4.8,
+		"features": ["Adaptive noise cancellation", "LDAC codec support", "Speak-to-chat"]
+	},
+	{
+		"name": "LG C2 65-inch OLED TV",
+		"category": "tvs",
+		"price": 1899.99,
+		"description": "The LG C2 65-inch OLED TV features self-lit pixels, a4 Gen5 AI Processor, and Dolby Vision IQ.",
+		"image": "lg-c2-oled.jpg",
+		"brand": "LG",
+		"specifications": {
+			"display": "65-inch OLED",
+			"resolution": "4K (3840x2160)",
+			"refresh_rate": "120Hz",
+			"hdr": "Dolby Vision, HDR10, HLG"
+		},
+		"stock": 20,
+		"rating": 4.9,
+		"features": ["OLED evo panel", "G-SYNC Compatible", "WebOS 22"]
+	},
+	{
+		"name": "PlayStation 5",
+		"category": "gaming",
+		"price": 499.99,
+		"description": "The PlayStation 5 features ultra-high speed SSD, ray tracing, 4K gaming, and haptic feedback with the DualSense wireless controller.",
+		"image": "playstation-5.jpg",
+		"brand": "Sony",
+		"specifications": {
+			"cpu": "AMD Zen 2 (8x 3.5GHz)",
+			"gpu": "AMD RDNA 2 (10.28 TFLOPS)",
+			"storage": "825GB SSD",
+			"ram": "16GB GDDR6"
+		},
+		"stock": 25,
+		"rating": 4.9,
+		"features": ["3D Audio", "Ray tracing", "DualSense controller"]
+	},
+	{
+		"name": "Apple AirPods Pro 2",
+		"category": "accessories",
+		"price": 249.99,
+		"description": "The AirPods Pro 2 feature personalized spatial audio, adaptive transparency, and significantly improved active noise cancellation.",
+		"image": "airpods-pro-2.jpg",
+		"brand": "Apple",
+		"specifications": {
+			"battery": "Up to 6 hours (30 with case)",
+			"noise_cancellation": "Active Noise Cancellation",
+			"connectivity": "Bluetooth 5.3",
+			"charging": "MagSafe, Lightning, Qi"
+		},
+		"stock": 75,
+		"rating": 4.7,
+		"features": ["Personalized Spatial Audio", "Adaptive Transparency", "Touch control"]
+	}
+]
