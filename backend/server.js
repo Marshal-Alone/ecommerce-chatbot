@@ -1,3 +1,6 @@
+// Load environment variables
+require("dotenv").config();
+
 const express = require("express");
 const cors = require("cors");
 const path = require("path");
@@ -14,10 +17,8 @@ app.use(cors()); // Enable CORS for all routes
 app.use(express.json()); // Parse JSON request bodies
 app.use(express.urlencoded({ extended: true })); // Parse URL-encoded request bodies
 
-// Basic test route
-app.get("/api/test", (req, res) => {
-	res.json({ message: "API is working!" });
-});
+// API Routes
+app.use("/api", require("./routes/api"));
 
 // Serve static files from frontend directory
 app.use(express.static(path.join(__dirname, "../frontend")));

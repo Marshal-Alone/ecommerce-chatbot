@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="E-commerce Electronics Chatbot - Your shopping assistant">
+    <meta name="theme-color" content="#4a6fa5">
+    <title>E-Bot - Your  Shopping Assistant</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <i class="fas fa-robot"></i>
+                <h1>E-Bot</h1>
+            </div>
+            <p class="tagline">Your Shopping Assistant</p>
+        </header>
+
+        <main>
+            <div class="chatbot-container">
+                <!-- Chat Header -->
+                <div class="chat-header">
+                    <div class="chat-header-title">
+                        <i class="fas fa-comments"></i>
+                        <span>Chat with E-Bot</span>
+                    </div>
+                    <button id="reset-chat" class="btn-reset" title="Reset Conversation">
+                        <i class="fas fa-redo"></i>
+                    </button>
+                </div>
+
+                <!-- Chat Messages Area -->
+                <div id="chat-messages" class="chat-messages">
+                    <!-- Messages will be inserted here dynamically -->
+                    <div class="message bot-message">
+                        <div class="message-content">
+                            Hello! I'm E-Bot, your shopping assistant. How can I help you today?
+                        </div>
+                        <div class="message-timestamp">Just now</div>
+                    </div>
+                </div>
+
+                <!-- Chat Input Area -->
+                <div class="chat-input-area">
+                    <input type="text" id="user-input" placeholder="Ask about products, brands, or categories...">
+                    <button id="send-btn" class="btn-send">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+            </div>
+
+        </main>
+
+        <footer>
+            <p>&copy; 2025 E-Bot - E-commerce Chatbot</p>
+        </footer>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div id="loading-overlay" class="loading-overlay">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/chatbot.js"></script>
+</body>
+
+</html>
